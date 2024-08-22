@@ -1,0 +1,160 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Controllers\BaseController;
+use App\Models\UserModel;
+
+class Auth extends BaseController
+{
+    public function __construct()
+    {
+        helper(['url', 'form']);
+    }
+
+    public function index()
+    {
+        return view('auth/login');
+    }
+
+    public function register()
+    {
+        return view('auth/register');
+    }
+
+    // Save New User in the Database
+    public function registerUser()
+    {
+        $validated = $this->validate([
+            'name' => 'required',
+            'email' => 'required|valid_email',
+            'password' => 'required|min_length[5]|max_length[12]',
+            'passwordConf' => 'required|min_length[5]|max_length[12]|matches[password]',
+        ]);
+
+        if (!$validated) {
+            return view('auth/register', ['validation' => $this->validator]);
+        }
+
+        $data = [
+            'name' => $this->request->getPost('name'),
+            'email' => $this->request->getPost('email'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+        ];
+
+        $userModel = new UserModel();
+
+        $query = $userModel->insert($data);
+
+        if (!$query) 
+        {
+            return redirect()->back()->with('fail', 'Failed to save user data.');
+        } 
+        else 
+        {
+            return redirect()->to('auth/register')->with('success', 'Registered successfully.');
+        }
+    }
+
+    public function loginUser()
+{
+    // Validate User Input Data
+    $validated = $this->validate([
+        'email' => 'required|valid_email',
+        'password' => 'required|min_length[5]|max_length[12]',
+    ]);
+
+    if (!$validated) {
+        return view('auth/login', ['validation' => $this->validator]);
+    }
+
+    $email = $this->request->getPost('email');
+    $password = $this->request->getPost('password');
+
+    $userModel = new UserModel();
+    
+    // Retrieve the user by email
+    $user = $userModel->where('Email', trim($email))->first(); // Ensure case matches your DB
+
+    // Check if user exists and verify password
+    if ($user) {
+        if (password_verify($password, $user['Password'])) { // Ensure case matches your DB
+            // Store user information in session
+            session()->set([
+                'user_id' => $user['id'],
+                'user_name' => $user['Name'], // Ensure case matches your DB
+                'user_email' => $user['Email'], // Ensure case matches your DB
+                'logged_in' => true,
+            ]);
+            return redirect()->to('/dashboard')->with('success', 'Login successful');
+        } else {
+            return redirect()->back()->with('fail', 'Incorrect password.');
+        }
+    } else {
+        return redirect()->back()->with('fail', 'Email not found.');
+    }
+}
+
+// Dashbourd 
+public function dashboard()
+{
+    // Check if the user is logged in
+    if (!session()->get('logged_in')) {
+        return redirect()->to('/auth')->with('fail', 'You must log in first.');
+    }
+
+    // Get user details from the session
+    $userModel = new UserModel();
+    $user = $userModel->find(session()->get('user_id'));
+
+    $userData = [
+        'user_id' => session()->get('user_id'),
+        'user_name' => session()->get('user_name'),
+        'user_email' => session()->get('user_email'),
+        'avatar' => isset($user['avatar']) ? $user['avatar'] : null, // Use null if avatar doesn't exist
+    ];
+
+    return view('dashboard', $userData);
+}
+
+
+//Working with Upload image in dashbourd
+
+public function upload()
+{
+    // Check if the user is logged in
+    if (!session()->get('logged_in')) {
+        return redirect()->to('/auth/login')->with('fail', 'You must log in first.');
+    }
+
+    $userModel = new UserModel();
+
+    // Validate the uploaded file
+    if ($this->request->getFile('avatar')->isValid() && !$this->request->getFile('avatar')->hasMoved()) {
+        $file = $this->request->getFile('avatar');
+        $newName = $file->getRandomName(); // Generate a random name for the file
+        $file->move('uploads', $newName); // Move the file to the 'uploads' directory
+
+        // Update the user's avatar in the database
+        $userModel->update(session()->get('user_id'), ['avatar' => $newName]);
+    }
+
+    return redirect()->to('/dashboard')->with('success', 'Profile picture uploaded successfully.');
+}
+
+
+
+
+
+
+
+
+public function logout()
+{
+    session()->destroy();
+    return redirect()->to('/auth')->with('success', 'Logged out successfully.');
+}
+
+
+
+}
