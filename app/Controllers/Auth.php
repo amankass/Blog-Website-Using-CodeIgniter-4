@@ -25,6 +25,10 @@ class Auth extends BaseController
     {
         return view('auth/verify');
     }
+    public function blog()
+    {
+        return view('auth/blog');
+    }
 
     private function sendOtpEmail($email, $otp)
     {
