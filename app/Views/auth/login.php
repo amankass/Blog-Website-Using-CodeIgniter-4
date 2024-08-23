@@ -22,17 +22,62 @@
             box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         }
         .btn-info {
-            background-color: #007bff;
+            background-color: #040720;
             border-color: #007bff;
+            color: #f8f9fa;
         }
         .btn-info:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+            text-decoration: wavy;
+            color: #FFA500;
         }
+        /* Header Section */
+.navbar {
+    background-color: #040720; /* Navbar background color */
+    padding: 0.5rem 1rem; /* Adjust padding for better spacing */
+}
+
+.navbar-brand {
+    font-size: 24px; /* Larger brand text */
+    font-weight: bold;
+    color: white; /* Ensure brand text is white */
+}
+
+.nav-link {
+    color: white; /* Link color */
+    font-weight: 500; /* Bold links */
+}
+
+.nav-link:hover {
+    color: #ffcc00; /* Hover color for links */
+}
     </style>
 </head>
 <body>
-    <div class="container">
+    
+        <!-- Login Header Section -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand text-white" href="/">Kokeb Tech</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="<?= site_url('auth/register'); ?>">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="<?= site_url('auth'); ?>">Login</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+        <!-- Login Header Section -->
+
         <div class="row justify-content-center">
             <div class="col-md-6 login-container">
                 <h4 class="text-center">Sign In</h4>
@@ -76,6 +121,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    
 </body>
 </html>

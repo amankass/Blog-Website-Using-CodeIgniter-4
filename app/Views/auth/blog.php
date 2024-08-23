@@ -163,6 +163,7 @@ body {
     </style>
 </head>
 <body>
+    
     <!-- Top Section -->
     <div class="top-section">
         <img src="/src/blogpic1.jpg" alt="Top Image">

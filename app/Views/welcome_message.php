@@ -11,18 +11,24 @@
             background-color: #f8f9fa;
         }
         .navbar {
-            background-color: #007bff; /* Navbar background color */
+            background-color: #040720; /* Navbar background color */
         }
         .navbar-brand {
             font-size: 24px; /* Larger brand text */
             font-weight: bold;
+            color: #f8f9fa;
         }
         .nav-link {
             color: white; /* Link color */
             font-weight: 500; /* Bold links */
         }
+        .navbar-brand:hover{
+            text-decoration: wavy;
+            color: #FFA500;
+        }
         .nav-link:hover {
-            color: #ffcc00; /* Hover color for links */
+            text-decoration: wavy;
+            color: #FFA500; /* Hover color for links */
         }
         .hero {
             background-image: url('hero-bg.jpg'); /* Replace with your image */
@@ -80,14 +86,14 @@
     <!-- Header Section -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Kokeb Tech</a>
+            <a class="navbar-brand" href="/">Kokeb Tech</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= site_url('auth/register'); ?>">Sign Up</a>
