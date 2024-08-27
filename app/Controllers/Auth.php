@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Models\BlogModel;
 
 class Auth extends BaseController
 {
@@ -49,7 +50,6 @@ class Auth extends BaseController
             log_message('error', $emailService->printDebugger());
         }
     }
-
 
     public function verifyOtp()
 {
@@ -168,16 +168,20 @@ public function dashboard()
     $userModel = new UserModel();
     $user = $userModel->find(session()->get('user_id'));
 
+    // Fetch user's blog posts
+    $blogModel = new BlogModel();
+    $user_blogs = $blogModel->where('user_id', session()->get('user_id'))->findAll();
+
     $userData = [
         'user_id' => session()->get('user_id'),
         'user_name' => session()->get('user_name'),
         'user_email' => session()->get('user_email'),
-        'avatar' => isset($user['avatar']) ? $user['avatar'] : null, // Use null if avatar doesn't exist
+        'avatar' => isset($user['avatar']) ? $user['avatar'] : null,
+        'user_blogs' => $user_blogs, // Pass the user's blog posts to the view
     ];
 
     return view('dashboard', $userData);
 }
-
 
 //Working with Upload image in dashbourd
 public function upload()

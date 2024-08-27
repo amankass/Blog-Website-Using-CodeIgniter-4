@@ -61,19 +61,7 @@
                 <label for="body" class="form-label">Body</label>
                 <textarea class="form-control" id="body" name="body" rows="6" placeholder="Enter the blog content" required></textarea>
             </div>
-
-            <!-- Date Field -->
-            <div class="mb-3">
-                <label for="date" class="form-label">Date</label>
-                <input type="date" class="form-control" id="date" name="date" required>
-            </div>
-
-            <!-- Added By Field -->
-            <div class="mb-3">
-                <label for="added_by" class="form-label">Added By</label>
-                <input type="text" class="form-control" id="added_by" name="added_by" placeholder="Author's name" required>
-            </div>
-
+        
             <!-- Submit Button -->
             <div class="text-center">
                 <button type="submit" class="btn btn-custom-primary">Publish Post</button>

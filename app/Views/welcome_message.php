@@ -45,10 +45,12 @@
             font-size: 48px;
             font-weight: bold;
             margin-bottom: 20px;
+            color: #040720;
         }
         .hero p {
             font-size: 24px;
             margin-bottom: 30px;
+            color: #040720;
         }
         .btn-primary {
             background-color: #007bff;
@@ -80,6 +82,10 @@
             color: white;
             padding: 20px 0;
         }
+        .btn-primary{
+            background-color: #040720;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -94,6 +100,9 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/blog">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= site_url('auth/register'); ?>">Sign Up</a>

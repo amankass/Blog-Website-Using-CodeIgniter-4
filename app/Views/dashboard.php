@@ -12,7 +12,6 @@
             padding-top: 40px;
         }
 
-        /* Card styles */
         .card {
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -36,15 +35,6 @@
             color: #007bff;
         }
 
-        /* Profile picture styles */
-        .card-body img {
-            display: block;
-            margin: 20px auto;
-            border-radius: 50%;
-            border: 4px solid #007bff;
-        }
-
-        /* Button styles */
         .btn-custom {
             margin-top: 20px;
             border-radius: 30px;
@@ -58,20 +48,18 @@
         }
 
         .btn-custom-danger {
-            background-color: #040720; /* Background color */
-            border-color: #007bff; /* Border color */
-            color: #f8f9fa; /* Text color */
-            transition: color 0.3s ease-in-out; /* Smooth transition for text color */
+            background-color: #040720; 
+            border-color: #007bff; 
+            color: #f8f9fa; 
+            transition: color 0.3s ease-in-out; 
         }
 
-        /* Button hover effect */
         .btn-custom:hover {
-            color: #FFA500; /* Change only the text color */
-            background-color: #040720; /* Keep the background color the same */
-            text-decoration: wavy; /* Apply text decoration */
+            color: #FFA500; 
+            background-color: #040720; 
+            text-decoration: wavy; 
         }
 
-        /* Flexbox container for buttons */
         .button-group {
             display: flex;
             justify-content: space-between;
@@ -93,9 +81,7 @@
                         <div class="alert alert-info text-center">
                             Welcome, <?= esc($user_name); ?>!
                         </div>
-
                         <h5 class="text-center fw-bold">USER DETAIL</h5>
-
                         <h5 class="mt-4 text-center">Profile Picture</h5>
                         <?php if (!empty($avatar)): ?>
                             <img src="<?= base_url('uploads/' . esc($avatar)); ?>" 
@@ -127,6 +113,26 @@
                             </div>
                         </div>
 
+                        <div class="list-group mb-4">
+    <?php foreach ($user_blogs as $blog): ?>
+        <div class="list-group-item">
+            <div class="row">
+                <div class="col-9">
+                    <strong><?= esc($blog['title']); ?></strong><br>
+                    <small>Created on: <?= esc($blog['created_at']); ?></small>
+                </div>
+                <div class="col-3 text-end">
+                    <a href="<?= site_url('blog/edit/' . $blog['id']); ?>" class="btn btn-primary btn-sm">Edit</a>
+                    <form action="<?= site_url('blog/delete/' . $blog['id']); ?>" method="post" style="display:inline;">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
                         <h5>Upload Profile Picture:</h5>
                         <div class="button-group">
                             <form action="<?= site_url('auth/upload'); ?>" method="post" enctype="multipart/form-data">
@@ -137,7 +143,7 @@
                                 <button type="submit" class="btn btn-custom btn-custom-success">Upload</button>
                             </form>
 
-                            <a href="<?= site_url('auth/blogform'); ?>" class="btn btn-custom btn-custom-danger">Create Blog</a>
+                            <a href="<?= site_url('blog/create'); ?>" class="btn btn-custom btn-custom-danger">Create Blog</a>
                         </div>
                     </div>
                 </div>

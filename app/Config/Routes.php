@@ -17,6 +17,16 @@ $routes->get('/dashboard', 'Auth::dashboard');
 $routes->get('/auth/logout', 'Auth::logout');
 $routes->post('/auth/upload', 'Auth::upload'); // Route for image upload
 $routes->get('/auth/verify', 'Auth::verify'); // Route for OTP verification page
-$routes->get('/auth/blog', 'Auth::blog'); // Route for OTP verification page
-$routes->get('/auth/blogform', 'Auth::blogform'); // Route for OTP verification page
+$routes->get('/auth/blog', 'Auth::blog'); // Route for blog page (optional, can be removed)
+$routes->get('/auth/blogform', 'Auth::blogform'); // Route for blog form (optional, can be removed)
 $routes->post('/auth/verifyOtp', 'Auth::verifyOtp'); // Route for OTP verification form submission
+
+// Add these routes for the Blog functionality
+$routes->group('blog', function($routes) {
+    $routes->get('/', 'BlogController::index'); // Route to view all blog posts
+    $routes->get('create', 'BlogController::create'); // Route to create a new blog post
+    $routes->post('store', 'BlogController::store'); // Route to store a new blog post
+    $routes->get('edit/(:num)', 'BlogController::edit/$1'); // Route to edit a blog post
+    $routes->post('update/(:num)', 'BlogController::update/$1'); // Route to update a blog post
+    $routes->post('delete/(:num)', 'BlogController::delete/$1'); // Route to delete a blog post
+});

@@ -9,6 +9,7 @@
         body {
             background-color: #f8f9fa;
         }
+
         .login-container {
             width: 450px;
             margin-top: 50px;
@@ -17,43 +18,48 @@
             background-color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
         .form-control:focus {
             border-color: #007bff;
             box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         }
+
         .btn-info {
-            background-color: #040720;
-            border-color: #007bff;
-            color: #f8f9fa;
+        background-color: #040720; 
+        border-color: #007bff; 
+        color: #f8f9fa; 
         }
+
         .btn-info:hover {
-            text-decoration: wavy;
-            color: #FFA500;
+        background-color: #040720;
+        color: #FFA500;
+        text-decoration: wavy;
+        text-decoration: underline; 
         }
-        /* Header Section */
-.navbar {
-    background-color: #040720; /* Navbar background color */
-    padding: 0.5rem 1rem; /* Adjust padding for better spacing */
-}
 
-.navbar-brand {
-    font-size: 24px; /* Larger brand text */
-    font-weight: bold;
-    color: white; /* Ensure brand text is white */
-}
+        .navbar {
+        background-color: #040720; 
+        padding: 0.5rem 1rem; 
+        }
 
-.nav-link {
-    color: white; /* Link color */
-    font-weight: 500; /* Bold links */
-}
+        .navbar-brand {
+            font-size: 24px; 
+            font-weight: bold;
+            color: white; 
+        }
 
-.nav-link:hover {
-    color: #ffcc00; /* Hover color for links */
-}
+        .nav-link {
+        color: white; 
+        font-weight: 500; 
+        }
+
+        .nav-link:hover {
+        color: #ffcc00; 
+        }
     </style>
 </head>
 <body>
-    
+
         <!-- Login Header Section -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -77,7 +83,6 @@
         </div>
     </nav>
         <!-- Login Header Section -->
-
         <div class="row justify-content-center">
             <div class="col-md-6 login-container">
                 <h4 class="text-center">Sign In</h4>

@@ -17,39 +17,45 @@
             background-color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
         .form-control:focus {
             border-color: #007bff;
             box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         }
+
         .btn-info {
-            background-color: #007bff;
+            background-color: #040720;
             border-color: #007bff;
+            color: #f8f9fa;
         }
+
         .btn-info:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+            background-color: #040720;
+            text-decoration: wavy;
+            text-decoration: underline; 
+            color: #FFA500;
         }
-    /* Header Section */
-.navbar {
-    background-color: #040720; /* Navbar background color */
-    padding: 0.5rem 1rem; /* Adjust padding for better spacing */
-}
 
-.navbar-brand {
-    font-size: 24px; /* Larger brand text */
-    font-weight: bold;
-    color: white; /* Ensure brand text is white */
-}
+        .navbar {
+            background-color: #040720; 
+            padding: 0.5rem 1rem; 
+        }
 
-.nav-link {
-    color: white; /* Link color */
-    font-weight: 500; /* Bold links */
-}
+        .navbar-brand {
+            font-size: 24px; 
+            font-weight: bold;
+            color: white; 
+        }
 
-.nav-link:hover {
-    color: #ffcc00; /* Hover color for links */
-}
-    </style>
+        .nav-link {
+            color: white;
+            font-weight: 500; 
+        }
+
+        .nav-link:hover {
+            color: #ffcc00; 
+        }
+  </style>
 </head>
 <body>
         <!-- Login Header Section -->
