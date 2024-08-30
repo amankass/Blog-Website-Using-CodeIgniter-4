@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <title>Create Blog Post</title>
     <style>
+
         /* Form container styling */
         .form-container {
             max-width: 600px;
@@ -17,25 +18,24 @@
         }
 
         .btn-custom-primary {
-            background-color: #040720; /* Background color */
-            border-color: #007bff; /* Border color */
-            color: #f8f9fa; /* Text color */
-            transition: color 0.3s ease-in-out; /* Smooth transition for text color */
+            background-color: #040720;
+            border-color: #007bff;
+            color: #f8f9fa; 
+            transition: color 0.3s ease-in-out; 
         }
 
-     /* Button hover effect */
         .btn-custom-primary:hover {
-            color: #FFA500; /* Change only the text color */
-            background-color: #040720; /* Keep the background color the same */
-            text-decoration: wavy; /* Apply text decoration */
+            color: #FFA500; 
+            background-color: #040720; 
+            text-decoration: wavy; 
         }
 
-        /* Title styling */
         .form-title {
             color: #040720; 
             margin-bottom: 20px;
             text-align: center;
         }
+
         .form-label{
             font-size: 18px;
             font-weight: bold;
@@ -50,25 +50,21 @@
         <form action="<?= site_url('blog/create'); ?>" method="post">
             <?= csrf_field(); ?>
 
-            <!-- Title Field -->
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Enter the title" required>
             </div>
 
-            <!-- Body Field -->
             <div class="mb-3">
                 <label for="body" class="form-label">Body</label>
                 <textarea class="form-control" id="body" name="body" rows="6" placeholder="Enter the blog content" required></textarea>
             </div>
-        
-            <!-- Submit Button -->
+
             <div class="text-center">
                 <button type="submit" class="btn btn-custom-primary">Publish Post</button>
             </div>
         </form>
     </div>
 </div>
-
 </body>
 </html>

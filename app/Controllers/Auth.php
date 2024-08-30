@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Controllers;
-
 use App\Controllers\BaseController;
 use App\Models\UserModel;
 use App\Models\BlogModel;
+
 
 class Auth extends BaseController
 {
@@ -35,42 +35,38 @@ class Auth extends BaseController
         return view('auth/blogform');
     }
 
+
+
     private function sendOtpEmail($email, $otp)
     {
         $emailService = \Config\Services::email();
-    
-        // Set the email parameters
-        $emailService->setFrom('your_email@example.com', 'Your Name'); // Change to your email and name
+        $emailService->setFrom('aamankassahun@gmail.com', 'Amanuel Kassahun'); // Change to your email and name
         $emailService->setTo($email);
         $emailService->setSubject('Email Verification - OTP');
         $emailService->setMessage("Your OTP for email verification is: $otp");
-    
         // Send the email
         if (!$emailService->send()) {
             log_message('error', $emailService->printDebugger());
         }
     }
 
-    public function verifyOtp()
+
+
+public function verifyOtp()
 {
     $otp = $this->request->getPost('otp');
     $userModel = new UserModel();
-
     // Find the user by OTP
     $user = $userModel->where('otp', $otp)->first();
-
     if ($user) {
         // Update the user's verification status and clear the OTP
         $userModel->update($user['id'], ['is_verified' => 1, 'otp' => null]);
-
         return redirect()->to('/auth')->with('success', 'Email verified! You can now log in.');
-    } else {
+    } 
+    else {
         return redirect()->back()->with('fail', 'Invalid OTP. Please try again.');
     }
 }
-
-
-
 
 
 
@@ -82,11 +78,9 @@ public function registerUser()
         'password' => 'required|min_length[5]|max_length[12]',
         'passwordConf' => 'required|min_length[5]|max_length[12]|matches[password]',
     ]);
-
     if (!$validated) {
         return view('auth/register', ['validation' => $this->validator]);
     }
-
     $data = [
         'name' => $this->request->getPost('name'),
         'email' => $this->request->getPost('email'),
@@ -94,18 +88,12 @@ public function registerUser()
         'is_verified' => 0, // Set verification status to 0
         'otp' => rand(100000, 999999), // Generate a random OTP
     ];
-
     $userModel = new UserModel();
     $userModel->insert($data);
-
     // Send OTP to user's email
     $this->sendOtpEmail($data['email'], $data['otp']);
-
     return redirect()->to('/auth/verify')->with('success', 'Registration successful! Please check your email for the OTP.');
 }
-
-
-
 
 
 
@@ -116,27 +104,22 @@ public function registerUser()
             'email' => 'required|valid_email',
             'password' => 'required|min_length[5]|max_length[12]',
         ]);
-    
         if (!$validated) {
             return view('auth/login', ['validation' => $this->validator]);
         }
-    
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
-    
         $userModel = new UserModel();
-        
         // Retrieve the user by email
         $user = $userModel->where('Email', trim($email))->first();
-    
         // Check if user exists and verify password
-        if ($user) {
+        if ($user) 
+        {
             if (password_verify($password, $user['Password'])) {
                 // Check if the user is verified
                 if ($user['is_verified'] == 0) {
                     return redirect()->back()->with('fail', 'Please verify your email before logging in.');
                 }
-    
                 // Store user information in session
                 session()->set([
                     'user_id' => $user['id'],
@@ -155,7 +138,6 @@ public function registerUser()
 
 
 
-
 // Dashbourd 
 public function dashboard()
 {
@@ -163,15 +145,12 @@ public function dashboard()
     if (!session()->get('logged_in')) {
         return redirect()->to('/auth')->with('fail', 'You must log in first.');
     }
-
     // Get user details from the session
     $userModel = new UserModel();
     $user = $userModel->find(session()->get('user_id'));
-
     // Fetch user's blog posts
     $blogModel = new BlogModel();
     $user_blogs = $blogModel->where('user_id', session()->get('user_id'))->findAll();
-
     $userData = [
         'user_id' => session()->get('user_id'),
         'user_name' => session()->get('user_name'),
@@ -179,9 +158,10 @@ public function dashboard()
         'avatar' => isset($user['avatar']) ? $user['avatar'] : null,
         'user_blogs' => $user_blogs, // Pass the user's blog posts to the view
     ];
-
     return view('dashboard', $userData);
 }
+
+
 
 //Working with Upload image in dashbourd
 public function upload()
@@ -191,24 +171,16 @@ public function upload()
         return redirect()->to('/auth/login')->with('fail', 'You must log in first.');
     }
     $userModel = new UserModel();
-
     // Validate the uploaded file
     if ($this->request->getFile('avatar')->isValid() && !$this->request->getFile('avatar')->hasMoved()) {
         $file = $this->request->getFile('avatar');
         $newName = $file->getRandomName(); // Generate a random name for the file
         $file->move('uploads', $newName); // Move the file to the 'uploads' directory
-
         // Update the user's avatar in the database
         $userModel->update(session()->get('user_id'), ['avatar' => $newName]);
     }
-
     return redirect()->to('/dashboard')->with('success', 'Profile picture uploaded successfully.');
 }
-
-
-
-
-
 
 
 
@@ -217,7 +189,4 @@ public function logout()
     session()->destroy();
     return redirect()->to('/auth')->with('success', 'Logged out successfully.');
 }
-
-
-
 }

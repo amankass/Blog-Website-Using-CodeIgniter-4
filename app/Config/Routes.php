@@ -29,4 +29,6 @@ $routes->group('blog', function($routes) {
     $routes->get('edit/(:num)', 'BlogController::edit/$1'); // Route to edit a blog post
     $routes->post('update/(:num)', 'BlogController::update/$1'); // Route to update a blog post
     $routes->post('delete/(:num)', 'BlogController::delete/$1'); // Route to delete a blog post
+    $routes->get('view/(:num)', 'BlogController::view/$1'); 
+    $routes->delete('delete/(:num)', 'BlogController::delete/$1'); // Route to delete a blog post
 });

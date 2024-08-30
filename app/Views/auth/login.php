@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Kokeb Tech - Sign In</title>
     <style>
+
         body {
             background-color: #f8f9fa;
         }
@@ -70,13 +71,16 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="<?= site_url('auth/register'); ?>">Sign Up</a>
+                        <a class="nav-link" aria-current="page" href="/blog">Blog</a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="<?= site_url('auth/register'); ?>">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="<?= site_url('auth'); ?>">Login</a>
+                    <a class="nav-link" href="<?= site_url('auth'); ?>">Login</a>
                 </li>
             </ul>
         </div>
