@@ -13,6 +13,7 @@
           margin: 0;
           padding: 0;
           background-color: #f4f4f4;
+          padding-top: 60px;
         }
 
         .slideshow-controls {
@@ -100,7 +101,7 @@
           flex-direction: column;
         }
         .card-text {
-          font-size: 1rem;
+          font-size: 0.8rem;
           color: #040720;
           overflow: hidden;
           display: -webkit-box; 
@@ -129,9 +130,11 @@
           transform: scale(1.1);
         }
         .card-title {
-          font-size: 2rem;
+          font-size: 1.5rem;
           margin-bottom: 10px;
           color: #FFA500;
+          font-weight: bold;
+          font-family: 'Roboto', sans-serif;
         }
         .card-description {
           font-size: 1.3rem;
@@ -176,6 +179,18 @@
         .card-text small {
             color:#007bff; 
         }
+        
+        .line {
+    align-self: center;
+    width: 100px; /* Set the width of the line */
+    margin: 20px auto; /* Center the line and add vertical spacing */
+    background-color: #FF0000; /* Set the line color to yellow */
+    color: red;
+    height: 5px; /* Increase the height to make it appear bold */
+    border: none; /* Remove the default border */
+}
+
+
         @media (max-width: 1024px) {
             .card {
                 flex: 1 1 calc(45% - 20px); 
@@ -196,7 +211,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top ">
         <div class="container">
             <a class="navbar-brand" href="/">Kokeb Tech</a>
             <button 
@@ -265,6 +280,7 @@
         <h1>Welcome to KokebTech Blog</h1>
         <p>Sharing ideas, thoughts, and stories</p>
     </div>
+    <hr class="line">
 </div>
 
 <div class="container my-5">
@@ -290,9 +306,8 @@
                 <a href="<?= site_url('blog/view/' . $blog['id']) ?>" class="btn btn-info">Read More</a>
             </div>
         </div>
-    <?php endforeach; ?>
+    <?php endforeach; ?> 
 </div>
-
 </div>
 
 <div class="text-center mt-4">

@@ -12,6 +12,7 @@
     <style>
         body {
             background-color: #f8f9fa;
+            padding-top: 50px;
         }
         .navbar {
             background-color: #040720; 
@@ -106,7 +107,7 @@ i:hover {
 </head>
 <body>
     <!-- Header Section -->
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/">Kokeb Tech</a>
             <button 

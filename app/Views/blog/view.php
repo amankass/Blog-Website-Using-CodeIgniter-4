@@ -8,11 +8,23 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
         body {
             background-color: #f4f4f4;
             font-family: Arial, sans-serif;
+            padding-top: 60px;
         }
+h1 {
+    font-size: 2.5rem;
+    color: #040720;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
         .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -24,8 +36,9 @@
 }
         h1 {
             font-size: 2.5rem;
-            color: #040720;
-            margin-bottom: 20px;
+    color: #040720;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
         }
 
         .text-muted {
@@ -98,7 +111,13 @@
             margin-bottom: 20px;
             width: 300px;
         }
-
+        .card-title {
+          font-size: 1rem;
+          margin-bottom: 10px;
+          color: #FFA500;
+          font-weight: bold;
+          font-family: 'Roboto', sans-serif;
+        }
         .navbar {
             background-color: #040720;
             padding: 8px 100px;
@@ -109,7 +128,10 @@
             font-weight: bold;
             color: #f8f9fa;
         }
-
+        .navbar-brand:hover{
+            text-decoration: wavy;
+            color: #FFA500;
+        }
         .navbar-nav .nav-link {
             color: white;
             font-weight: 500;
@@ -119,11 +141,66 @@
             text-decoration: wavy;
             color: #FFA500;
         }
+        .text{
+            text-align: center;
+            color: #FFA500;
+            font-weight: bold;
+        }
+        .line {
+    align-self: center;
+    width: 100px; /* Set the width of the line */
+    margin: 20px auto; /* Center the line and add vertical spacing */
+    background-color: #FF0000; /* Set the line color to yellow */
+    color: red;
+    height: 5px; /* Increase the height to make it appear bold */
+    border: none; /* Remove the default border */
+}
+
+        @media (max-width: 760px) {
+    .container {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+
+    .col-md-8, .col-md-4 {
+        flex: 0 0 100%; /* Stack columns on mobile */
+        max-width: 100%; /* Ensure full width */
+    }
+
+    .recommended-posts {
+        align-self: center; /* Remove left margin for mobile */
+        margin-top: 20px; /* Add top margin for spacing */
+        
+    }
+
+    .navbar {
+        padding: 8px 20px; /* Adjust navbar padding */
+    }
+
+    .navbar-brand {
+        font-size: 20px; /* Smaller brand font size */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px; /* Smaller nav link font size */
+    }
+
+    h1 {
+        font-size: 2rem; /* Adjust heading size */
+    }
+
+    .recommended-posts h3 {
+        font-size: 1.5rem; /* Smaller recommended posts title */
+    }
+
+    .card-title {
+        font-size: 0.9rem; /* Smaller card title */
+    }
+}
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Kokeb Tech</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -166,7 +243,8 @@
         <div class="row">
             <!-- Main Blog Content -->
             <div class="col-md-8">
-                <h1 class="text-center"><?= esc($blog['title']) ?></h1>
+                <h1 class="text"><?= esc($blog['title']) ?></h1>
+                <hr class="line">
                 <?php if (!empty($blog['image'])) : ?>
                     <img src="<?= base_url('uploads/' . esc($blog['image'])) ?>" alt="Blog Image" class="img-fluid mb-4">
                 <?php endif; ?>
@@ -189,7 +267,9 @@
                         <?php endif; ?>
                         <div class="card-body">
                             <h5 class="card-title"><?= esc($relatedBlog['title']) ?></h5>
-                            <p class="card-text"><?= esc(character_limiter($relatedBlog['content'], 100)) ?></p>
+                            <p class="card-text">
+                                <?= htmlspecialchars_decode (character_limiter ($relatedBlog['content'],100))?>
+                            </p>
                             <a href="<?= site_url('blog/view/' . esc($relatedBlog['id'])) ?>" class="btn btn-secondary">Read More</a>
                         </div>
                     </div>

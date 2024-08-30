@@ -8,6 +8,7 @@
     <style>
         body {
             background-color: #f4f6f9;
+            padding-top: 50px;
         }
         .card {
             border-radius: 10px;
@@ -109,48 +110,47 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid"> 
-            <a 
-            class="navbar-brand" 
-            href="/">Kokeb Tech</a>
-            <button 
-            class="navbar-toggler" 
-            type="button" 
-            data-bs-toggle="collapse" 
-            data-bs-target="#navbarNav" 
-            aria-controls="navbarNav" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Kokeb Tech</a>
+        <button 
+        class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarNav" 
+        aria-controls="navbarNav" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/blog">Blog</a>
+                </li>
+                <?php if (session()->get('logged_in')): ?>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                        <a class="nav-link" href="<?= site_url('/dashboard'); ?>">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/blog">Blog</a>
+                        <a class="nav-link" href="<?= site_url('auth/logout'); ?>">Logout</a>
                     </li>
-                    <?php if (session()->get('logged_in')): ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= site_url('/dashboard'); ?>">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= site_url('auth/logout'); ?>">Logout</a>
-                        </li>
-                    <?php else: ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= site_url('auth/register'); ?>">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= site_url('auth'); ?>">Login</a>
-                        </li>
-                    <?php endif; ?>
-                </ul>
-            </div>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('auth/register'); ?>">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('auth'); ?>">Login</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
