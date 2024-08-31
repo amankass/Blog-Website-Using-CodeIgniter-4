@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
@@ -19,26 +20,26 @@
             font-family: Arial, sans-serif;
             padding-top: 60px;
         }
-h1 {
-    font-size: 2.5rem;
-    color: #040720;
-    margin-bottom: 20px;
-    font-family: 'Roboto', sans-serif;
-}
-        .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: flex; /* Ensure the container uses flexbox */
-}
         h1 {
             font-size: 2.5rem;
-    color: #040720;
-    margin-bottom: 20px;
-    font-family: 'Roboto', sans-serif;
+            color: #040720;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+                .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex; /* Ensure the container uses flexbox */
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #040720;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
         }
 
         .text-muted {
@@ -66,40 +67,39 @@ h1 {
             color: #FFA500;
             text-decoration: underline;
         }
-/* Main blog content */
-.col-md-8 {
-    flex: 0 0 70%; /* Occupy 70% of the width */
-    max-width: 70%; /* Ensure it doesn't exceed 70% */
-}
-        
-.recommended-posts {
-    flex: 1; /* Allow the section to grow to fill remaining space */
-    max-width: 30%; /* Maximum width set to 30% */
-    margin-left: 20px; /* Space between main content and recommended posts */
-    margin-top: 3%;
-}
-.recommended-posts .card {
-    margin-bottom: 20px; /* Space between recommended posts */
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
-    display: none;
-}
-.recommended-posts .card:first-child,
-        .recommended-posts .card:nth-child(2) {
-            display: block; /* Display the first two cards */
+
+        .col-md-8 {
+            flex: 0 0 70%; 
+            max-width: 70%; 
+        }
+        .recommended-posts {
+            flex: 1;
+            max-width: 30%;
+            margin-left: 20px; 
+            margin-top: 3%;
+        }
+        .recommended-posts .card {
+            margin-bottom: 20px; 
+            transition: transform 0.3s, box-shadow 0.3s; 
+            display: none;
+        }
+        .recommended-posts .card:first-child,
+                .recommended-posts .card:nth-child(2) {
+                    display: block; 
+                }
+
+        .recommended-posts .card:hover {
+            transform: translateY(-5px); 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+        }
+        .recommended-posts .card img {
+            transition: transform 0.3s ease; 
+            height: 150px;
         }
 
-.recommended-posts .card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
-}
-.recommended-posts .card img {
-    transition: transform 0.3s ease; /* Smooth transition for scaling */
-    height: 150px;
-}
-
-.recommended-posts .card:hover img {
-    transform: scale(1.05); /* Slightly scale up the image on hover */
-}
+        .recommended-posts .card:hover img {
+            transform: scale(1.05); 
+        }
         .recommended-posts h3 {
             font-size: 1.8rem;
             color: #040720;
@@ -147,58 +147,74 @@ h1 {
             font-weight: bold;
         }
         .line {
-    align-self: center;
-    width: 100px; /* Set the width of the line */
-    margin: 20px auto; /* Center the line and add vertical spacing */
-    background-color: #FF0000; /* Set the line color to yellow */
-    color: red;
-    height: 5px; /* Increase the height to make it appear bold */
-    border: none; /* Remove the default border */
-}
+            align-self: center;
+            width: 100px; 
+            margin: 20px auto;
+            background-color: #FF0000;
+            color: red;
+            height: 5px; 
+            border: none; 
+    }
+
+        .likes-section .btn-link {
+            color: #dc3545;
+        }
+
+        .likes-section .btn-link:hover {
+            color: #b02a37;
+        }
+
+        .comments-section .fa-heart,
+        .comments-section .fa-comments,
+        .comments-section .fa-user,
+        .comments-section .fa-comment,
+        .comments-section .fa-paper-plane {
+            margin-right: 0.5rem;
+        }
+
 
         @media (max-width: 760px) {
     .container {
-        padding: 10px; /* Reduce padding on smaller screens */
+        padding: 10px; 
     }
 
     .col-md-8, .col-md-4 {
-        flex: 0 0 100%; /* Stack columns on mobile */
-        max-width: 100%; /* Ensure full width */
+        flex: 0 0 100%;
+        max-width: 100%; 
     }
 
     .recommended-posts {
-        align-self: center; /* Remove left margin for mobile */
-        margin-top: 20px; /* Add top margin for spacing */
+        align-self: center; 
+        margin-top: 20px; 
         
     }
 
     .navbar {
-        padding: 8px 20px; /* Adjust navbar padding */
+        padding: 8px 20px; 
     }
 
     .navbar-brand {
-        font-size: 20px; /* Smaller brand font size */
+        font-size: 20px; 
     }
 
     .navbar-nav .nav-link {
-        font-size: 14px; /* Smaller nav link font size */
+        font-size: 14px; 
     }
 
     h1 {
-        font-size: 2rem; /* Adjust heading size */
+        font-size: 2rem; 
     }
 
     .recommended-posts h3 {
-        font-size: 1.5rem; /* Smaller recommended posts title */
+        font-size: 1.5rem; 
     }
 
     .card-title {
-        font-size: 0.9rem; /* Smaller card title */
+        font-size: 0.9rem; 
     }
 }
     </style>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container-fluid">
@@ -239,9 +255,9 @@ h1 {
         return (strlen($str) > $limit) ? substr($str, 0, $limit) . '...' : $str;
     }
     ?>
+
     <div class="container my-5">
         <div class="row">
-            <!-- Main Blog Content -->
             <div class="col-md-8">
                 <h1 class="text"><?= esc($blog['title']) ?></h1>
                 <hr class="line">
@@ -249,12 +265,63 @@ h1 {
                     <img src="<?= base_url('uploads/' . esc($blog['image'])) ?>" alt="Blog Image" class="img-fluid mb-4">
                 <?php endif; ?>
                 <p class="card-text"><small>Created on: <?= esc($blog['created_at']) ?></small></p>
-                <!-- Decode the content to display HTML -->
                 <div class="card-text">
                     <?= htmlspecialchars_decode($blog['content']) ?>
                 </div>
                 <div class="text-center mt-4">
                     <a href="<?= site_url('blog') ?>" class="btn btn-secondary">Back to Blog</a>
+                </div>
+                <!-- Like Section -->
+                <div class="likes-section mt-4">
+                <form id="likeForm" action="<?= site_url('blog/like/' . $blog['id']) ?>" method="post" onsubmit="return checkLogin()">   
+                        <?= csrf_field(); ?>
+                        <button type="submit" class="btn btn-link text-danger p-0">
+                            <i class="fas fa-heart"></i> <?= count($likes) ?>
+                        </button>
+                    </form>
+                </div>
+                <!-- Comments Section -->
+                <div class="comments-section mt-4">
+                    <?php foreach ($comments as $comment): ?>
+                        <div class="comment">
+                            <p>
+                                <strong>
+                                    <i class="fas fa-user"></i> <?= esc($comment['user_id']) ?>:
+                                </strong>
+                                <?= esc($comment['content']) ?>
+                            </p>
+                        </div>
+                    <?php endforeach; ?>
+                    <form id="commentForm" action="<?= site_url('blog/comment/' . $blog['id']) ?>" method="post" onsubmit="return checkLogin()">
+                        <?= csrf_field(); ?>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fas fa-comment"></i>
+                            </span>
+                            <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Post Comment
+                        </button>
+                    </form>
+                </div>
+                <!-- Modal for Login Required -->
+                <div class="modal fade" id="loginRequiredModal" tabindex="-1" aria-labelledby="loginRequiredModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="loginRequiredModalLabel">Login Required</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                You must be logged in to like or comment on this post.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a href="<?= site_url('auth') ?>" class="btn btn-primary">Login</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Recommended Posts Section -->
@@ -273,6 +340,7 @@ h1 {
                             <a href="<?= site_url('blog/view/' . esc($relatedBlog['id'])) ?>" class="btn btn-secondary">Read More</a>
                         </div>
                     </div>
+                    
                 <?php endforeach; ?>
                 <div class="text-center">
                     <button id="loadMoreBtn" class="btn btn-secondary mt-3">Load More</button>
@@ -281,15 +349,24 @@ h1 {
             </div>
         </div>
     </div>
-
     <script>
-       document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".recommended-posts .card");
-    const loadMoreBtn = document.getElementById("loadMoreBtn");
-    const showLessBtn = document.getElementById("showLessBtn");
-    let visibleCount = 2; // Number of initially visible cards
-    const increment = 2; // Number of cards to show with each click
-
+        function checkLogin() {
+            const isLoggedIn = <?= json_encode(session()->get('logged_in')) ?>;
+                if (!isLoggedIn) {
+                const modal = new bootstrap.Modal(document.getElementById('loginRequiredModal'));
+                modal.show();
+                return false; 
+              }
+            return true; 
+            }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll(".recommended-posts .card");
+            const loadMoreBtn = document.getElementById("loadMoreBtn");
+            const showLessBtn = document.getElementById("showLessBtn");
+            let visibleCount = 2; // Number of initially visible cards
+            const increment = 2; // Number of cards to show with each click
     // Function to update the visibility of cards
     function updateCardVisibility() {
         cards.forEach((card, index) => {
@@ -298,32 +375,24 @@ h1 {
             } else {
                 card.style.display = "none";
             }
-        });
-    }
-
-    // Initial visibility setup
-    updateCardVisibility();
-
-    loadMoreBtn.addEventListener("click", function () {
-        visibleCount += increment; // Increase visible count by the increment
-        if (visibleCount >= cards.length) {
+            });}
+            // Initial visibility setup
+            updateCardVisibility();
+            loadMoreBtn.addEventListener("click", function () {
+            visibleCount += increment; // Increase visible count by the increment
+            if (visibleCount >= cards.length) {
             visibleCount = cards.length; // Ensure it doesn't exceed total cards
-            loadMoreBtn.style.display = "none"; // Hide "Load More" when all cards are visible
-        }
-        updateCardVisibility();
-        showLessBtn.style.display = "inline-block"; // Show "Show Less" button
-    });
-
-    showLessBtn.addEventListener("click", function () {
-        visibleCount = 2; // Reset visible count to the initial number
-        updateCardVisibility();
-        loadMoreBtn.style.display = "inline-block"; // Show "Load More" button again
-        showLessBtn.style.display = "none"; // Hide "Show Less" button
-    });
-});
-
+            loadMoreBtn.style.display = "none"; }// Hide "Load More" when all cards are visible
+            updateCardVisibility();
+            showLessBtn.style.display = "inline-block"; // Show "Show Less" button
+        });
+            showLessBtn.addEventListener("click", function () {
+            visibleCount = 2; // Reset visible count to the initial number
+            updateCardVisibility();
+            loadMoreBtn.style.display = "inline-block"; // Show "Load More" button again
+            showLessBtn.style.display = "none"; // Hide "Show Less" button
+        }); });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

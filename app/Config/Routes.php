@@ -31,4 +31,6 @@ $routes->group('blog', function($routes) {
     $routes->post('delete/(:num)', 'BlogController::delete/$1'); // Route to delete a blog post
     $routes->get('view/(:num)', 'BlogController::view/$1'); 
     $routes->delete('delete/(:num)', 'BlogController::delete/$1'); // Route to delete a blog post
+    $routes->post('like/(:num)', 'BlogController::likePost/$1');
+$routes->post('comment/(:num)', 'BlogController::commentPost/$1');
 });
