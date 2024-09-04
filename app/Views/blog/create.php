@@ -32,11 +32,59 @@
         text-decoration: wavy;
         text-decoration: underline; 
         }
+
+        
+    .navbar {
+        background-color: #040720;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .nav-link {
+        color: white;
+        font-weight: 500;
+    }
+
+    .nav-link:hover {
+        color: #ffcc00;
+    }
+
     </style>
 </head>
 
 <body>
 
+   <!-- Login Header Section -->
+   <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand text-white" href="/">Kokeb Tech</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="<?= site_url('auth/register'); ?>">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('auth'); ?>">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div class="container my-5">
         <div class="row justify-content-center">

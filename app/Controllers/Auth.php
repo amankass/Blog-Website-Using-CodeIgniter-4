@@ -26,17 +26,16 @@ class Auth extends BaseController
     {
         return view('auth/verify');
     }
-    public function blog()
-    {
-        return view('auth/blog');
-    }
+    // public function blog()
+    // {
+    //     return view('auth/blog');
+    // }
     public function blogform()
     {
         return view('auth/blogform');
     }
 
-
-
+    // Function for Send OTP to User
     private function sendOtpEmail($email, $otp)
     {
         $emailService = \Config\Services::email();
@@ -50,8 +49,7 @@ class Auth extends BaseController
         }
     }
 
-
-
+    // Function for Verify Users OTP
 public function verifyOtp()
 {
     $otp = $this->request->getPost('otp');
@@ -69,9 +67,10 @@ public function verifyOtp()
 }
 
 
-
+// Function for Registration Users
 public function registerUser()
-{
+{ 
+    //Users Input Validation
     $validated = $this->validate([
         'name' => 'required',
         'email' => 'required|valid_email|is_unique[users.email]',
@@ -96,7 +95,7 @@ public function registerUser()
 }
 
 
-
+    // User Login
     public function loginUser()
     {
         // Validate User Input Data
@@ -135,7 +134,6 @@ public function registerUser()
             return redirect()->back()->with('fail', 'Email not found.');
         }
     }
-
 
 
 // Dashbourd 
@@ -183,7 +181,7 @@ public function upload()
 }
 
 
-
+//User Logout
 public function logout()
 {
     session()->destroy();
