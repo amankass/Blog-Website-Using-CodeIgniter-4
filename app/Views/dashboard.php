@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -163,7 +162,7 @@
             </div>
         </div>
     </nav>
-
+<!-- Dashbourds Container -->
     <div class="container" style="margin-top: 35px;">
         <div class="row justify-content-center">
             <div class="col-md-10">
@@ -204,6 +203,7 @@
                                 </div>
                             </div>
                         </div>
+                <!-- Listing odf Users Privios Posts -->
                         <h5>Your Blog Posts</h5>
                         <div class="list-group mb-4">
                             <?php foreach ($user_blogs as $blog): ?>
@@ -226,7 +226,7 @@
                             </div>
                             <?php endforeach; ?>
                         </div>
-
+                    <!-- Upload Profile Photo -->
                         <h5>Upload Profile Picture</h5>
                         <div class="button-group d-flex justify-content-between align-items-center mb-4">
                             <form action="<?= site_url('auth/upload'); ?>" method="post" enctype="multipart/form-data"
@@ -254,10 +254,9 @@
         var alert = document.getElementById('welcomeAlert');
         alert.classList.remove('show'); // Remove the show class
         alert.style.opacity = '0'; // Fade out effect
-    }, 1500); // Adjust the time (5000ms = 5 seconds)
+    }, 1500); // Adjust the time (1500)
     </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

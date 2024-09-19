@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <title>Blog Posts</title>
     <link rel="stylesheet" href="/css/styles.css">
-
     
     <style>
     body {
@@ -94,6 +93,10 @@
         flex-direction: column;
     }
 
+    .card-text small {
+        color: #007bff;
+    }
+
     .card-text {
         font-size: 0.8rem;
         color: #040720;
@@ -160,6 +163,7 @@
         text-decoration: underline;
     }
 
+    /* Header Css */
     
     .navbar {
         background-color: #040720;
@@ -186,10 +190,9 @@
         color: #FFA500;
     }
 
-    .card-text small {
-        color: #007bff;
-    }
+    /* Header Css */
 
+    /* Breaker line Css */
     .line {
         align-self: center;
         width: 100px;
@@ -204,7 +207,7 @@
         border: none;
         /* Remove the default border */
     }
-
+    /* Breaker line Css */
 
     @media (max-width: 1024px) {
         .card {
@@ -227,7 +230,6 @@
     }
     </style>
 </head>
-
 <body>
   <!-- Header Section -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -264,10 +266,13 @@
             </div>
         </div>
     </nav>
+
+    <!-- Top image Section -->
     <div class="top-section">
         <img src="/src/A8.jpg" alt="Top Image" class="img-fluid" id="slideshow-image">
     </div>
 
+<!-- Midel Section Of the Page -->
     <div class="middle-section">
         <div class="text-overlay">
             <h1>Welcome to KokebTech Blog</h1>
@@ -277,9 +282,16 @@
     </div>
 
     <div class="container my-5" style="margin-top: 0%;">
-        <div class="blog-container">
-            <?php $counter = 0; // Initialize a counter ?>
-            <?php foreach ($blogs as $blog): ?>
+         <div class="blog-container">
+        <?php 
+            // Sort blogs by created_at in descending order
+                usort($blogs, function($a, $b) {
+                return strtotime($b['created_at']) - strtotime($a['created_at']);
+            });
+        $counter = 0; // Initialize a counter
+        ?>
+
+        <?php foreach ($blogs as $blog): ?>
             <?php $counter++; // Increment the counter ?>
             <div class="card <?= $counter > 3 ? 'hidden' : '' ?>">
                 <!-- Hide cards after the 3rd post -->
@@ -296,18 +308,17 @@
                     <div class="card-text">
                         <?= htmlspecialchars_decode($blog['content']) ?>
                     </div>
-
                     <a href="<?= site_url('blog/view/' . $blog['id']) ?>" class="btn btn-info">Read More</a>
                 </div>
             </div>
-            <?php endforeach; ?>
-        </div>
+        <?php endforeach; ?>
     </div>
+</div>
 
+<!-- Load More div And Script -->
     <div class="text-center mt-4">
         <button id="load-more" class="btn btn-info">Load More</button>
     </div>
-
 
     <script>
     document.getElementById('load-more').addEventListener('click', function() {
